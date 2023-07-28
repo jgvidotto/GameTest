@@ -27,6 +27,11 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	void MoveForward(float Value);
+	void MoveRight(float Value);
+	void LookUp(float Value);
+	void LookRigth(float Value);
+	void MoveInDirection(const FVector& Direction, float Value);
 
 private:
 	UPROPERTY(VisibleAnywhere)

@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "Pawns/PlayerPawn.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "Pawns/PlayerPawn.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()

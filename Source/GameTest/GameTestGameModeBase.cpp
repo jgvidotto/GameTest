@@ -1,6 +1,6 @@
+#include "GameTestGameModeBase.h"
 #include "Pawns/EnemyPawn.h"
 #include "NavigationSystem.h"
-#include "GameTestGameModeBase.h"
 
 AGameTestGameModeBase::AGameTestGameModeBase()
 {
@@ -10,7 +10,9 @@ AGameTestGameModeBase::AGameTestGameModeBase()
 void AGameTestGameModeBase::BeginPlay()
 {
     Super::BeginPlay();
-    
+
+    GetWorldTimerManager().SetTimer(TimerHandle, this, &AGameTestGameModeBase::IncrementScore, 1.0f, true);
+
     UNavigationSystemV1* NavSystem = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
 
     if (NavSystem)
@@ -40,6 +42,11 @@ void AGameTestGameModeBase::BeginPlay()
         }
     }
 
+}
+
+void AGameTestGameModeBase::IncrementScore()
+{
+    PlayerScore++;
 }
 
 

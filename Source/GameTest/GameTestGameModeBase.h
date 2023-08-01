@@ -18,6 +18,15 @@ public:
 
     virtual void BeginPlay() override;
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score")
+    int32 PlayerScore;
+
+    UFUNCTION(BlueprintPure, Category = "Score")
+        FText GetScoreText() const
+    {
+        return FText::AsNumber(PlayerScore);
+    }
+
 protected:
     UPROPERTY(EditAnywhere, Category = "Gameplay")
     TSubclassOf<class AEnemyPawn> EnemyClass;
@@ -27,4 +36,10 @@ protected:
 
     UPROPERTY(EditAnywhere, Category = "Gameplay")
     int32 NumberOfEnemies = 4;
+
+    UFUNCTION(BlueprintCallable, Category = "Score")
+    void IncrementScore();
+
+private:
+    FTimerHandle TimerHandle;
 };

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "GameFramework/FloatingPawnMovement.h"
 #include "EnemyPawn.generated.h"
 
 class UCapsuleComponent;
@@ -21,14 +22,20 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void ResumeMovement();
+	void StopMovement();
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
 
 private:
 	UPROPERTY(VisibleAnywhere)
 	UCapsuleComponent* Capsule;
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* Mesh;
-
+	UFloatingPawnMovement* FloatingPawnMovement;
+	APawn* PlayerPawn = nullptr;
 };

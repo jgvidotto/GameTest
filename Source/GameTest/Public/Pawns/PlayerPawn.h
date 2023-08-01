@@ -38,4 +38,6 @@ private:
 	UCapsuleComponent* Capsule;
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* Mesh;
+	UPROPERTY(VisibleAnywhere)
+	float PlayerFOV = 90.0f;;
 };

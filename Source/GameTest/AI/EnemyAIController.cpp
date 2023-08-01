@@ -2,7 +2,13 @@
 
 
 #include "EnemyAIController.h"
-#include <Kismet/GameplayStatics.h>
+#include "Navigation/CrowdFollowingComponent.h"
+#include "Kismet/GameplayStatics.h"
+
+AEnemyAIController::AEnemyAIController(const FObjectInitializer& ObjectInitializer)
+    : AAIController(ObjectInitializer.SetDefaultSubobjectClass<UCrowdFollowingComponent>(TEXT("PathFollowingComponent")))
+{
+}
 
 void AEnemyAIController::BeginPlay()
 {

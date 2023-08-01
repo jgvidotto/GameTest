@@ -1,6 +1,7 @@
 #include "GameTestGameModeBase.h"
 #include "Pawns/EnemyPawn.h"
 #include "NavigationSystem.h"
+#include "Kismet/GameplayStatics.h"
 
 AGameTestGameModeBase::AGameTestGameModeBase()
 {
@@ -47,6 +48,20 @@ void AGameTestGameModeBase::BeginPlay()
 void AGameTestGameModeBase::IncrementScore()
 {
     PlayerScore++;
+}
+
+void AGameTestGameModeBase::GameOver()
+{
+    GetWorldTimerManager().ClearTimer(TimerHandle);
+
+    // Restart the level after 2 seconds
+    FTimerHandle UnusedHandle;
+    GetWorldTimerManager().SetTimer(UnusedHandle, this, &AGameTestGameModeBase::RestartLevel, 2.0f, false);
+}
+
+void AGameTestGameModeBase::RestartLevel()
+{
+    UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
 

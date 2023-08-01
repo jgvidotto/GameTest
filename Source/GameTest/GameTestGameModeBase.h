@@ -27,6 +27,12 @@ public:
         return FText::AsNumber(PlayerScore);
     }
 
+    UFUNCTION(BlueprintCallable, Category = "Game")
+    void GameOver();
+
+    UFUNCTION(BlueprintCallable, Category = "Game")
+    void RestartLevel();
+
 protected:
     UPROPERTY(EditAnywhere, Category = "Gameplay")
     TSubclassOf<class AEnemyPawn> EnemyClass;
